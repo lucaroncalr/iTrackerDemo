@@ -19,6 +19,14 @@
             overflow: hidden;
         }
 
+        #unity-canvas {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+            background: #0000;
+            z-index: -99;
+        }
+
         .ctaDiv {
             display: flex;
             flex-direction: column;
@@ -53,7 +61,7 @@
     </div>
 
     <div id="unity-container" class="unity-desktop">
-        <canvas id="unity-canvas" style="width: 100%; height: 100%; background: #0000; z-index: -99"></canvas>
+        <canvas id="unity-canvas"></canvas>
         <div id="unity-loading-bar">
             <div id="unity-logo"></div>
             <div id="unity-progress-bar-empty">
@@ -73,10 +81,19 @@
             container.className = "unity-mobile";
         }
 
-        function StartCamera() {
+        // Limita il devicePixelRatio per evitare zoom eccessivo
+        function getSafeDevicePixelRatio() {
+            return Math.min(window.devicePixelRatio || 1, 2);
+        }
+
+        function resizeCanvas() {
             canvas.style.width = window.innerWidth + "px";
             canvas.style.height = window.innerHeight + "px";
+        }
+        window.addEventListener('resize', resizeCanvas);
 
+        function StartCamera() {
+            resizeCanvas();
             document.getElementById("startWebcamDiv").style.display = "none";
 
             createUnityInstance(canvas, {
@@ -86,20 +103,20 @@
                 streamingAssetsUrl: "StreamingAssets",
                 companyName: "DefaultCompany",
                 productName: "Image Tracker demo",
-                productVersion: "0.1"
+                productVersion: "0.1",
+                matchWebGLToCanvasSize: true,
+                devicePixelRatio: getSafeDevicePixelRatio()
             },
             (progress) => {
-                progressBarFull.style.width = 100 * progress + "%";
+                progressBarFull.style.width = (100 * progress) + "%";
             }).then((unityInstance) => {
                 window.gameInstance = unityInstance;
                 window.unityInstance = unityInstance;
 
-                // Avvio webcam solo dopo che Unity è pronto
                 if (window.iTracker && typeof window.iTracker.startWebcam === "function") {
                     window.iTracker.startWebcam();
                 }
 
-                // Se il browser blocca autoplay webcam, mostra bottone manuale
                 window.waitForVideo = () => {
                     setTimeout(() => {
                         if (!window.iTracker.VIDEO) {
