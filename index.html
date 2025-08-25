@@ -41,13 +41,20 @@
 		<imagetarget id='reel' src='targets/reel.png'></imagetarget>
 		<imagetarget id='rmn' src='targets/rmn.png'></imagetarget>
 		<imagetarget id='cosa-resta-dopo-di-te' src='targets/cosa-resta-dopo-di-te.jpg'></imagetarget>
-		<imagetarget id='eppure-fiorire' src='targets/eppure-fiorire.jpg'></imagetarget>
 		<imagetarget id='guarire' src='targets/guarire.jpg'></imagetarget>
 		<imagetarget id='la-scelta' src='targets/la-scelta.jpg'></imagetarget>
 		<imagetarget id='memorie-d-infanzia' src='targets/memorie-d-infanzia.jpg'></imagetarget>
 		<imagetarget id='nonostante-tutto' src='targets/nonostante-tutto.jpg'></imagetarget>
 		<imagetarget id='senza-parole' src='targets/senza-parole.jpg'></imagetarget>
 		<imagetarget id='senza-titolo' src='targets/senza-titolo.jpg'></imagetarget>
+		<imagetarget id='eppure-fiorire' src='targets/eppure-fiorire.jpg'></imagetarget>
+		<imagetarget id='mianda-gin' src='targets/mianda-gin.jpg'></imagetarget>
+		<imagetarget id='pero-mia-mamma' src='targets/pero-mia-mamma.jpg'></imagetarget>
+		<imagetarget id='primavera-in-me' src='targets/primavera-in-me.jpg'></imagetarget>
+		<imagetarget id='profondo-bosco' src='targets/profondo-bosco.jpg'></imagetarget>
+		<imagetarget id='verbi-riflessivi' src='targets/verbi-riflessivi.jpg'></imagetarget>
+		<imagetarget id='vorresti-mordermi' src='targets/vorresti-mordermi.jpg'></imagetarget>
+		<imagetarget id='welcome' src='targets/welcome.tif'></imagetarget>
 
     <video id="webcam-video" muted autoplay playsinline style="width:1px;position:absolute"></video>
     <canvas id="video-canvas" style="width:100%; height:100%; object-fit:cover; position:absolute"></canvas>
@@ -86,7 +93,7 @@
     </div>
     <script src="arcamera.js" type="text/javascript"></script>
     <script src="itracker.js" type="text/javascript"></script>
-    <script src="Build/Builds.loader.js"></script>
+    <script src="Build/Ver 0.1.5.loader.js"></script>
     <script>
             var initialize = async() =>{
                 var unityCanvas = document.querySelector("#unity-canvas");
@@ -118,9 +125,9 @@
                 
                 document.getElementById("startARDiv").style.display = "none";
                 createUnityInstance(document.querySelector("#unity-canvas"), {
-                    dataUrl: "Build/Builds.data",
-                    frameworkUrl: "Build/Builds.framework.js",
-                    codeUrl: "Build/Builds.wasm",
+                    dataUrl: "Build/Ver 0.1.5.data",
+                    frameworkUrl: "Build/Ver 0.1.5.framework.js",
+                    codeUrl: "Build/Ver 0.1.5.wasm",
                     streamingAssetsUrl: "StreamingAssets",
                     companyName: "Layout",
                     productName: "Borgo Petit",
